@@ -268,13 +268,11 @@ void define_vessel_data_display() {
     //MODE 4: Re-Entry Mode
     //MaxOverHeat
     clearLCD();
-    char bufferMaxOverHeat[17];
-    String strMaxOverHeat = "Heat:  ";
-    int overheatperc = VData.MaxOverHeat - 48; //convert byte into integer (char 48  is zero).
-    strMaxOverHeat += String(overheatperc, 0);
-    strMaxOverHeat += " %";
-    strMaxOverHeat.toCharArray(bufferMaxOverHeat,17);
-    writeLCD(bufferMaxOverHeat);
+    char t[3];
+    dtostrf(VData.MaxOverHeat,3,0,t);
+    writeLCD("Heat: ");
+    writeLCD(t);
+    writeLCD("%");
     //Acceleration (G)
     jumpToLineTwo();
     char bufferGee[17];
