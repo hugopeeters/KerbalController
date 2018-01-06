@@ -229,12 +229,11 @@ void define_vessel_data_display() {
     //MODE 2: Maneuver Mode
     //MNTime
     clearLCD();
-    char bufferMNTime[33];
-    String strMNTime = "Tnode: ";
-    strMNTime += String(VData.MNTime, 0);
-    strMNTime += " s";
-    strMNTime.toCharArray(bufferMNTime,33);
-    writeLCD(bufferMNTime);
+    char t[10];
+    dtostrf(VData.MNTime,8,0,t);
+    writeLCD("Tnode: ");
+    writeLCD(t);
+    writeLCD("s");
     //MNDeltaV
     jumpToLineTwo();
     char bufferMNDeltaV[17];
